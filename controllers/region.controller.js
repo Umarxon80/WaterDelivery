@@ -42,7 +42,7 @@ export const AddRegion = async (req, res) => {
     );
     console.log(newregion.rows[0]);
     res.status(201).send({
-      message: "New region is addes",
+      message: "New region is added",
       data: newregion.rows[0],
     });
   } catch (error) {

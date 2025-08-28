@@ -44,7 +44,7 @@ export const AddCustomer=async(req,res)=>{
         );
         console.log(newCustomer.rows[0]);
         res.status(201).send({
-            message:"New customer is addes",
+            message:"New customer is added",
             data:newCustomer.rows[0]
         })
     } catch (error) {
