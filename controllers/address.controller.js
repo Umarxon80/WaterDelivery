@@ -1,7 +1,24 @@
 import pool from "../config/db.js";
-
+import DeviceDetector from "node-device-detector";
+import DeviceHelper from "node-device-detector/helper.js";
+const detector = new DeviceDetector({
+        clientIndexes: true,
+        deviceIndexes: true,
+        osIndexes: true,
+        deviceAliasCode: false,
+        deviceTrusted: false,
+        deviceInfo: false,
+        maxUserAgentSize: 500,
+      });
 
 export const Getaddress=async(req,res)=>{
+    const userAgent=req.headers["user-agent"]
+    console.log(userAgent);
+    
+    const result = detector.detect(userAgent);
+    console.log(DeviceHelper.isDesktop(result));
+    console.log(DeviceHelper.isDesktop(result));
+      
     try {
         const newadress= await pool.query(
             `Select * from address`
